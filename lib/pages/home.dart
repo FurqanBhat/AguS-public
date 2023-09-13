@@ -49,6 +49,8 @@ class _HomeState extends State<Home> {
                   ),
                   DrawerTile(title: "Final Exams", icon: Icon(Icons.schedule),
                   onTap: (){
+                    scaffoldKey.currentState?.closeDrawer();
+                    Navigator.of(context).pushNamed(RouteManager.finalExams);
                   },
                   ),
                 ],
@@ -57,12 +59,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: ChangeNotifierProvider(
-        create: (context)=> CoursesModel(),
-        builder: (context, child){
-          return CoursesWidget();
-        },
-      ),
+      body: CoursesWidget(),
     );
   }
 }

@@ -9,29 +9,24 @@ class CoursesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<CoursesModel>().fetchCourses();
     return ChangeNotifierProvider(
     create: (context)=>CoursesInfoModel(),
       builder: (context, child) {
-        return Consumer<CoursesModel>(
-          builder: (context, courseModel, child) {
-            return ListView.builder(
-              itemCount: courseModel.courses.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                    textColor: Colors.white,
-                    iconColor: Colors.blue,
-                    leading: Icon(Icons.book),
-                    title: Text(courseModel.courses[index]["name"]),
-                    onTap: () {
-                      CoursesInfoModel.courseCode=(courseModel.courses[index]["id"]);
-                      Navigator.of(context).pushNamed(RouteManager.coursesInfo);
-                    }
-                );
-              },
-
+        return ListView.builder(
+          itemCount: CoursesModel.courses.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+                textColor: Colors.white,
+                iconColor: Colors.blue,
+                leading: Icon(Icons.book),
+                title: Text(CoursesModel.courses[index]["name"]),
+                onTap: () {
+                  CoursesInfoModel.courseCode=(CoursesModel.courses[index]["id"]);
+                  Navigator.of(context).pushNamed(RouteManager.coursesInfo);
+                }
             );
           },
+
         );
       }
     );

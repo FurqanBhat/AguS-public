@@ -23,8 +23,9 @@ class _LoadingPageState extends State<LoadingPage> {
   }
   void getToken() async{
     await LoginModel.loginstart();
+    await CoursesModel.fetchCourses();
     await ConversationsModel.getConversations();
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
     context.read<LoadingModel>().doneLoading=true;
   }
 

@@ -6,13 +6,11 @@ import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 import '../routes/routes.dart';
-class CoursesModel with ChangeNotifier{
+class CoursesModel{
   static bool requestSuccess=false;
-  CoursesModel(){
-    fetchCourses();
-  }
-  List<dynamic> courses=[];
-  Future<void> fetchCourses() async{
+
+  static List<dynamic> courses=[];
+  static Future<void> fetchCourses() async{
     final response= await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/courses?per_page=50&access_token=${LoginModel.token}"));
     if(response.statusCode==200){
       requestSuccess=true;
@@ -25,14 +23,14 @@ class CoursesModel with ChangeNotifier{
         print(e.toString() +"my error");
       }
 
-      notifyListeners();
     }else{
+      requestSuccess=false;
       print(response.statusCode);
     }
 
   }
 
-  void setCourses() {
+  static void setCourses() {
     DateTime now=DateTime.now();
     print(now);
     int currMonth=now.month;
