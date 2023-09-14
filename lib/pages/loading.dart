@@ -1,3 +1,4 @@
+import 'package:agus/model/announcements_model.dart';
 import 'package:agus/model/conversations_model.dart';
 import 'package:agus/model/login_model.dart';
 import 'package:agus/pages/login.dart';
@@ -25,6 +26,7 @@ class _LoadingPageState extends State<LoadingPage> {
     await LoginModel.loginstart();
     await CoursesModel.fetchCourses();
     await ConversationsModel.getConversations();
+    await AnnouncementsModel.fetchAnnouncements();
     await Future.delayed(Duration(seconds: 1));
     context.read<LoadingModel>().doneLoading=true;
   }

@@ -80,6 +80,7 @@ class _LoginState extends State<Login> {
                       setState(() {
                         progressBar=true;
                       });
+                      FocusScope.of(context).unfocus();
                       await CoursesModel.fetchCourses();
                       print("heijaieafa");
                       if(CoursesModel.requestSuccess){
@@ -123,7 +124,7 @@ class _LoginState extends State<Login> {
                     ),
                     onPressed: (){},
                     child: Text(
-                      "Continue without login",
+                      "Help",
                       style: TextStyle(
                         fontSize: 20,
                       ),

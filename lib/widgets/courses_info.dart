@@ -1,3 +1,4 @@
+import 'package:agus/model/assignments_model.dart';
 import 'package:agus/model/course_into_model.dart';
 import 'package:agus/model/files_model.dart';
 import 'package:flutter/material.dart';
@@ -27,28 +28,42 @@ class _CoursesInfoState extends State<CoursesInfo> {
 
             ),
           ): Container(),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 1,
-              itemBuilder: (context, index){
-                return ListTile(
-                  title: Text("Files"),
-                  onTap: () async{
-                    setState(() {
-                      progressBar=true;
-                    });
+          Column(
+            children: [
+              ListTile(
+                title: Text("Files"),
+                onTap: () async{
+                  setState(() {
+                    progressBar=true;
+                  });
 
-                    await FilesModel.fetchFiles();
-                    setState(() {
-                      progressBar=false;
-                    });
-                    Navigator.of(context).pushNamed(RouteManager.filesPage);
-                  },
-
-                );
-              },
+                  await FilesModel.fetchFiles();
+                  setState(() {
+                    progressBar=false;
+                  });
+                  Navigator.of(context).pushNamed(RouteManager.filesPage);
+                },
             ),
+              ListTile(
+                title: Text("All Assignments"),
+                onTap: () async{
+                  setState(() {
+                    progressBar=true;
+                  });
+                  await AssignmentsModel.fetchAssignments();
+                  setState(() {
+                    progressBar=false;
+                  });
+                  Navigator.of(context).pushNamed(RouteManager.assignments);
+                },
+
+              ),
+
+
+            ],
           ),
+
+
         ],
       ),
     );

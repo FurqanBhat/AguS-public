@@ -40,13 +40,13 @@ class _ConversationsState extends State<Conversations>{
                             margin: EdgeInsets.symmetric(horizontal: 20),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.blue[200]
+                              color: Colors.blueGrey[900]
                             ),
                             child: Text("Last Message: " + ConversationsModel.conversations[index]["last_authored_message"],
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black
+                              color: Colors.white
                             ),
                             ),
                           ),
