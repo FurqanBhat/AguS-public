@@ -1,5 +1,6 @@
 import 'package:agus/model/assignments_model.dart';
 import 'package:agus/model/course_into_model.dart';
+import 'package:agus/model/discussions_model.dart';
 import 'package:agus/model/files_model.dart';
 import 'package:agus/model/results_model.dart';
 import 'package:flutter/material.dart';
@@ -74,6 +75,21 @@ class _CoursesInfoState extends State<CoursesInfo> {
                     progressBar=false;
                   });
                   Navigator.of(context).pushNamed(RouteManager.results);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.people, color: Colors.blue,),
+                title: Text("Discussions"),
+                onTap: () async{
+                  setState(() {
+                    progressBar=true;
+                  });
+
+                  await DiscussionModel.getDiscussions();
+                  setState(() {
+                    progressBar=false;
+                  });
+                  Navigator.of(context).pushNamed(RouteManager.discussions);
                 },
               ),
 
