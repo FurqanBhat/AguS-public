@@ -4,6 +4,7 @@ import 'package:agus/widgets/courses_info.dart';
 import 'package:agus/widgets/files_page.dart';
 import 'package:agus/widgets/final_exam.dart';
 import 'package:agus/widgets/pdf_viewer.dart';
+import 'package:agus/widgets/results.dart';
 import 'package:flutter/material.dart';
 import '../pages/home.dart';
 import '../pages/login.dart';
@@ -16,6 +17,7 @@ class RouteManager{
   static const String conversations="/drawer/conversations";
   static const String finalExams="/drawer/finalExams";
   static const String assignments="/coursesInfo/assignments";
+  static const String results="/coursesInfo/results";
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -30,6 +32,8 @@ class RouteManager{
         return MaterialPageRoute(builder: (context)=>FilesPage());
       case assignments:
         return MaterialPageRoute(builder: (context)=>Assignments());
+      case results:
+        return MaterialPageRoute(builder: (context)=>Results());
       case pdfViewer:
         return MaterialPageRoute(builder: (context)=>PdfViewer());
       case conversations:
