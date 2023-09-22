@@ -1,6 +1,6 @@
 
 import 'dart:io';
-import 'package:agus/model/course_into_model.dart';
+import 'package:agus/model/course_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';

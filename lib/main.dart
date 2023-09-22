@@ -28,7 +28,13 @@ class MyApp extends StatelessWidget {
         return context.watch<LoadingModel>().doneLoading ?  MaterialApp(
           initialRoute: LoginModel.loginSuccessful ? RouteManager.home : RouteManager.login,
           onGenerateRoute: RouteManager.generateRoute,
-          theme: ThemeData.dark()
+          theme: ThemeData.dark().copyWith(
+            appBarTheme: AppBarTheme(
+              backgroundColor: secondaryColor
+            ),
+            scaffoldBackgroundColor: primaryColor,
+
+          ),
         ) : LoadingPage(context: context);
       },
     );
@@ -41,3 +47,14 @@ class MyHttpOverrides extends HttpOverrides{
       ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
   }
 }
+
+
+
+// Define the color scheme
+final Color secondaryColor = Color(0xFF182223); // WhatsApp green
+final Color primaryColor = Color(0xFF0E1214); // WhatsApp teal
+final Color backgroundColor = Color(0xFF060606); // WhatsApp dark background
+final Color chatBackgroundColor = Color(0xFF19191A); // WhatsApp chat background
+final Color accentColor = Color(0xFF25D366); // WhatsApp accent color for buttons
+final Color textColor = Colors.white; // Text color for light-colored text
+

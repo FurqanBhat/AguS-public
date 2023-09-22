@@ -7,7 +7,6 @@ class Results extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.cyanAccent,
         title: Text("Results"),
       ),
       body: Container(
@@ -16,7 +15,7 @@ class Results extends StatelessWidget {
           itemCount: ResultsModel.results.length,
           itemBuilder: (context, index){
             return ListTile(
-              leading: Icon(Icons.grade_rounded, color: Colors.blue,),
+              leading: Icon(Icons.grade_rounded, color: Colors.blueGrey[400],),
               title: Text(ResultsModel.results[index]["assignment"]["name"]),
               trailing: Text("${ResultsModel.results[index]["score"]}/${ResultsModel.results[index]["assignment"]["points_possible"]}"),
               leadingAndTrailingTextStyle: TextStyle(

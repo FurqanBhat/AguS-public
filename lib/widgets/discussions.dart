@@ -9,7 +9,6 @@ class Discussions extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Discussions"),
-        foregroundColor: Colors.cyanAccent,
       ),
       body: Container(
         child: ListView.builder(
@@ -18,7 +17,7 @@ class Discussions extends StatelessWidget {
             return ListTile(
               titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               subtitleTextStyle: TextStyle(fontWeight: FontWeight.w500),
-              leading: Icon(Icons.people_outline, color: Colors.blue,),
+              leading: Icon(Icons.people_outline, color: Colors.blueGrey[400],),
               title: Text(DiscussionModel.discussions[index]['title']),
               subtitle:Container(
                 margin: EdgeInsets.only(top: 10, bottom: 10),

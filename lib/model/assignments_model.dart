@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:agus/model/course_into_model.dart';
+import 'package:agus/model/course_info_model.dart';
 import 'package:agus/model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';

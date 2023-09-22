@@ -1,3 +1,4 @@
+import 'package:agus/main.dart';
 import 'package:agus/model/assignments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -9,7 +10,6 @@ class Assignments extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Assignments"),
-        foregroundColor: Colors.cyan,
       ),
       body: ListView.builder(
         itemCount: AssignmentsModel.assignments.length,
@@ -27,7 +27,7 @@ class Assignments extends StatelessWidget {
               subtitle: Container(
                 margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
+                  color: secondaryColor,
                   borderRadius: BorderRadius.circular(20)
                 ),
                 child: Html(

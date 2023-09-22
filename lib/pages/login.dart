@@ -82,7 +82,6 @@ class _LoginState extends State<Login> {
                       });
                       FocusScope.of(context).unfocus();
                       await CoursesModel.fetchCourses();
-                      print("heijaieafa");
                       if(CoursesModel.requestSuccess){
                         LoginModel.setLoginSuccessful();
                         await LoginModel.loginstart();
@@ -97,6 +96,7 @@ class _LoginState extends State<Login> {
                       setState(() {
                         progressBar=false;
                       });
+
 
                     },
                     style: ElevatedButton.styleFrom(
@@ -122,7 +122,10 @@ class _LoginState extends State<Login> {
                     style: OutlinedButton.styleFrom(
                       surfaceTintColor: Colors.white,
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      print("help");
+                      Navigator.of(context).pushNamed(RouteManager.help);
+                    },
                     child: Text(
                       "Help",
                       style: TextStyle(

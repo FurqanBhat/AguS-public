@@ -1,7 +1,10 @@
 import 'package:agus/model/announcements_model.dart';
 import 'package:agus/model/conversations_model.dart';
+import 'package:agus/model/latest_announcements_model.dart';
+import 'package:agus/model/latest_assignments_model.dart';
 import 'package:agus/model/login_model.dart';
 import 'package:agus/pages/login.dart';
+import 'package:agus/widgets/latest_assignments.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +29,8 @@ class _LoadingPageState extends State<LoadingPage> {
     await LoginModel.loginstart();
     await CoursesModel.fetchCourses();
     await ConversationsModel.getConversations();
-    await AnnouncementsModel.fetchAnnouncements();
-    await Future.delayed(Duration(seconds: 1));
+    // await LatestAnnouncementsModel.fetchLatestAnnouncements();
+    // await LatestAssignmentsModel.fetchLatestAssignments();
     context.read<LoadingModel>().doneLoading=true;
   }
 

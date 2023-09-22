@@ -1,4 +1,4 @@
-import 'package:agus/model/conversations_model.dart';
+import 'package:agus/model/announcements_model.dart';
 import 'package:flutter/material.dart';
 class Announcements extends StatelessWidget {
   const Announcements({super.key});
@@ -8,10 +8,9 @@ class Announcements extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Announcements'),
-        foregroundColor: Colors.cyan,
       ),
       body: ListView.builder(
-        itemCount: ConversationsModel.conversations.length,
+        itemCount: AnnouncementsModel.announcements.length,
         itemBuilder: (context, index){
           return ListTile();
         },

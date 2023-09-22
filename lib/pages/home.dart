@@ -1,9 +1,10 @@
-import 'package:agus/model/courses_model.dart';
+import 'package:agus/main.dart';
 import 'package:agus/widgets/courses_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../routes/routes.dart';
+import '../widgets/latest_announcements.dart';
+import '../widgets/latest_assignments.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,49 +18,92 @@ class _HomeState extends State<Home> {
   int index=0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 25,
-          color: Colors.cyan,
-        ),
-        foregroundColor: Colors.cyan,
-        title: Text("AguS"),
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              child: Image(
-                image: AssetImage("assets/logo.png"),
-                height: 120,
-                width: 100,
-              )
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        key: scaffoldKey,
+        appBar: AppBar(
+          leading: ElevatedButton(
+            onPressed: (){},
+            child: Image.asset('assets/logo.png'),
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.all(12),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              backgroundColor: secondaryColor,
             ),
-            Expanded(
-              child: Column(
-                children: [
-                  DrawerTile(title: "Messages", icon:Icon(Icons.message),
-                    onTap: (){
-                    scaffoldKey.currentState?.closeDrawer();
-                    Navigator.of(context).pushNamed(RouteManager.conversations);
-                  },
-                  ),
-                  DrawerTile(title: "Final Exams", icon: Icon(Icons.schedule),
-                  onTap: (){
-                    scaffoldKey.currentState?.closeDrawer();
-                    Navigator.of(context).pushNamed(RouteManager.finalExams);
-                  },
-                  ),
-                ],
-              ),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.more_vert),
+              onPressed: (){
+                scaffoldKey.currentState?.openEndDrawer();
+              },
             )
+          ],
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                text: 'Latest Announcements',
+              ),
+              Tab(
+                text: 'Upcoming Assignments',
+              ),
+              Tab(
+                text: 'Courses',
+              ),
+
+            ],
+
+
+          ),
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.grey,
+          ),
+          foregroundColor: Colors.grey,
+          title: Text("AguS"),
+        ),
+        endDrawer: Drawer(
+          backgroundColor: secondaryColor,
+          child: Column(
+            children: [
+              DrawerHeader(
+                child: Image(
+                  image: AssetImage("assets/logo.png"),
+                  height: 120,
+                  width: 100,
+                )
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    DrawerTile(title: "Messages", icon:Icon(Icons.message),
+                      onTap: (){
+                      scaffoldKey.currentState?.closeEndDrawer();
+                      Navigator.of(context).pushNamed(RouteManager.conversations);
+                    },
+                    ),
+                    DrawerTile(title: "Final Exams", icon: Icon(Icons.schedule),
+                    onTap: (){
+                      scaffoldKey.currentState?.closeEndDrawer();
+                      Navigator.of(context).pushNamed(RouteManager.finalExams);
+                    },
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            LatestAnnouncements(),
+            LatestAssignments(),
+            CoursesWidget(),
           ],
         ),
       ),
-      body: CoursesWidget(),
     );
   }
 }
@@ -84,7 +128,7 @@ class DrawerTile extends StatelessWidget {
         fontWeight: FontWeight.w600
       ),
       leading: icon,
-      iconColor: Colors.red,
+      iconColor: Colors.grey,
       onTap: onTap,
     );
   }

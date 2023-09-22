@@ -18,7 +18,6 @@ class _ConversationsState extends State<Conversations>{
     return Scaffold(
       appBar: AppBar(
         title: Text("Conversations"),
-        foregroundColor: Colors.cyan,
       ),
       body: ListView.builder(
         itemCount: ConversationsModel.conversations.length,
@@ -27,8 +26,10 @@ class _ConversationsState extends State<Conversations>{
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             child: ListTile(
               title: Text(ConversationsModel.conversations[index]["subject"]),
-              leading: Icon(Icons.message, color: Colors.blue,),
+              titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              leading: Icon(Icons.message, color: Colors.blueGrey[400],),
               subtitle: Text(ConversationsModel.conversations[index]["last_message"]),
+              subtitleTextStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
               trailing: IconButton(
                 onPressed: (){
                   showDialog(
@@ -54,7 +55,7 @@ class _ConversationsState extends State<Conversations>{
                       },
                   );
                 },
-                icon: Icon(Icons.info, color: Colors.blue,),
+                icon: Icon(Icons.info_sharp, color: Colors.blue[500],),
               ),
             ),
           );

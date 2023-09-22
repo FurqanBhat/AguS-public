@@ -1,5 +1,6 @@
+import 'package:agus/model/announcements_model.dart';
 import 'package:agus/model/assignments_model.dart';
-import 'package:agus/model/course_into_model.dart';
+import 'package:agus/model/course_info_model.dart';
 import 'package:agus/model/discussions_model.dart';
 import 'package:agus/model/files_model.dart';
 import 'package:agus/model/results_model.dart';
@@ -20,20 +21,34 @@ class _CoursesInfoState extends State<CoursesInfo> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Course Details"),
-        foregroundColor: Colors.cyanAccent,
       ),
       body: Stack(
         children: [
           progressBar ? Center(
             child: CircularProgressIndicator(
-              color: Colors.blue,
+              color: Colors.blueGrey[400],
 
             ),
           ): Container(),
           Column(
             children: [
               ListTile(
-                leading: Icon(Icons.file_open, color: Colors.blue,),
+                leading: Icon(Icons.announcement, color: Colors.blueGrey[400],),
+                title: Text("All Announcements"),
+                onTap: () async{
+                  setState(() {
+                    progressBar=true;
+                  });
+
+                  await AnnouncementsModel.fetchAnnouncements();
+                  setState(() {
+                    progressBar=false;
+                  });
+                  Navigator.of(context).pushNamed(RouteManager.announcements);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.file_open, color: Colors.blueGrey[400],),
                 title: Text("Files"),
                 onTap: () async{
                   setState(() {
@@ -48,7 +63,7 @@ class _CoursesInfoState extends State<CoursesInfo> {
                 },
             ),
               ListTile(
-                leading: Icon(Icons.assignment, color: Colors.blue,),
+                leading: Icon(Icons.assignment, color: Colors.blueGrey[400],),
                 title: Text("All Assignments"),
                 onTap: () async{
                   setState(() {
@@ -63,7 +78,7 @@ class _CoursesInfoState extends State<CoursesInfo> {
 
               ),
               ListTile(
-                leading: Icon(Icons.grade, color: Colors.blue,),
+                leading: Icon(Icons.grade, color: Colors.blueGrey[400],),
                 title: Text("Grades"),
                 onTap: () async{
                   setState(() {
@@ -78,7 +93,7 @@ class _CoursesInfoState extends State<CoursesInfo> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.people, color: Colors.blue,),
+                leading: Icon(Icons.people, color: Colors.blueGrey[400],),
                 title: Text("Discussions"),
                 onTap: () async{
                   setState(() {

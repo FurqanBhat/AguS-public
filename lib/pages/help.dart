@@ -8,11 +8,12 @@ class Help extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Help'),
-        foregroundColor: Colors.cyan,
+        foregroundColor: Colors.blueGrey[400],
       ),
       body: Column(
-
-      ),
+        
+      )
     );
   }
+
 }

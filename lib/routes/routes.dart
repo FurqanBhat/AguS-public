@@ -1,3 +1,5 @@
+import 'package:agus/pages/help.dart';
+import 'package:agus/widgets/announcements.dart';
 import 'package:agus/widgets/assignments.dart';
 import 'package:agus/widgets/conversations.dart';
 import 'package:agus/widgets/courses_info.dart';
@@ -12,6 +14,7 @@ import '../pages/login.dart';
 class RouteManager{
   static const String home='/';
   static const String login="login";
+  static const String help="help";
   static const String coursesInfo="/coursesInfo";
   static const String filesPage="/coursesInfo/filesPage";
   static const String pdfViewer="/coursesInfo/filesPage/pdfViewer";
@@ -20,6 +23,8 @@ class RouteManager{
   static const String assignments="/coursesInfo/assignments";
   static const String results="/coursesInfo/results";
   static const String discussions="/coursesInfo/discussions";
+  static const String announcements="/coursesInfo/announcements";
+
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -28,6 +33,8 @@ class RouteManager{
         return MaterialPageRoute(builder: (context)=>Home());
       case login:
         return MaterialPageRoute(builder: (context)=>Login());
+      case help:
+        return MaterialPageRoute(builder: (context)=>Help());
       case coursesInfo:
         return MaterialPageRoute(builder: (context)=>CoursesInfo());
       case filesPage:
@@ -38,6 +45,8 @@ class RouteManager{
         return MaterialPageRoute(builder: (context)=>Results());
       case discussions:
         return MaterialPageRoute(builder: (context)=>Discussions());
+      case announcements:
+        return MaterialPageRoute(builder: (context)=>Announcements());
       case pdfViewer:
         return MaterialPageRoute(builder: (context)=>PdfViewer());
       case conversations:
