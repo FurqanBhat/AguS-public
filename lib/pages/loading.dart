@@ -39,10 +39,18 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     Random random=Random();
-    int index=random.nextInt(8);
+    int index=random.nextInt(16);
     List<String> quotes=[
+      "Per aspera ad astra.",
+      "The purpose of life is finding the largest burden that you can bear and bearing it",
+      "The poet only asks to get his head into the heavens. It is the logician who seeks to get the heavens into his head. And it is his head that splits.",
+      "I never saw anyone get away with anything, the chickens always came home to roost.",
       "It's only after we've lost everything that we're free to do anything.",
+      "It’s a luxury to pursue what makes you happy; it’s a moral obligation to pursue what you find meaningful.",
       "The things we own end up owning us.",
+      "Worthlessness is the default condition.",
+      "When you have something to say, silence is a lie – and tyranny feeds on lies.",
+      "You have some vital role to play in the unfolding destiny of the world. You are, therefore, morally obliged to take care of yourself",
       "I let go. Lost in oblivion. Dark and silent and complete. I found freedom. Losing all hope was freedom.",
       "May I never be complete. May I never be content. May I never be perfect.",
       "Advertising has us chasing cars and clothes, working jobs we hate so we can buy things we don't need.",
