@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class Help extends StatelessWidget {
@@ -6,12 +7,47 @@ class Help extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[800],
         title: Text('Help'),
-        foregroundColor: Colors.blueGrey[400],
       ),
-      body: Column(
-        
+      body: Container(
+        color: Colors.blueGrey[700],
+        padding: EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10,),
+              Text("Log into your canvas account and click on the top left icon: 'Account'.", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+              SizedBox(height: 10,),
+              Image.asset('assets/first.png'),
+              SizedBox(height: 30,),
+              Text("Click on 'Settings'.", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+              SizedBox(height: 10,),
+              Image.asset('assets/second.png'),
+              SizedBox(height: 30,),
+              Text("Scroll down and click on 'New Access Token'.", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+              SizedBox(height: 10,),
+              Image.asset('assets/third.png'),
+              SizedBox(height: 30,),
+              Text("In the 'Purpose' field, write whatever you want. It's does not matter. Leave the 'Expires' field blank because you don't want your token to expire.", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+              SizedBox(height: 10,),
+              Image.asset('assets/fourth.png'),
+              SizedBox(height: 30,),
+              Text("You'll get a token like below. Copy it and paste it in the app to login. You won't be asked to login again.", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+              SizedBox(height: 10,),
+              Image.asset('assets/fifth.png'),
+              SizedBox(height: 30,),
+              Divider(color: Colors.black, thickness: 5,),
+              SizedBox(height: 10,),
+              Text("Note: \nYour data is stored locally on your device, ensuring privacy. \nThe app solely relies on the Canvas LMS API, guaranteeing data security.", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),),
+              SizedBox(height: 20,)
+            ],
+
+          ),
+        ),
       )
     );
   }

@@ -3,6 +3,8 @@ import 'package:agus/model/loading_model.dart';
 import 'package:agus/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:agus/model/latest_announcements_model.dart';
+import 'package:agus/model/latest_assignments_model.dart';
 import '../model/conversations_model.dart';
 import '../model/login_model.dart';
 
@@ -86,6 +88,8 @@ class _LoginState extends State<Login> {
                         LoginModel.setLoginSuccessful();
                         await LoginModel.loginstart();
                         await ConversationsModel.getConversations();
+                        await LatestAnnouncementsModel.fetchLatestAnnouncements();
+                        await LatestAssignmentsModel.fetchLatestAssignments();
                         Navigator.of(context).pushReplacementNamed(RouteManager.home);
                       }else{
                         showBottomSheet(
