@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:agus/model/announcements_model.dart';
 import 'package:agus/model/conversations_model.dart';
 import 'package:agus/model/latest_announcements_model.dart';
@@ -36,6 +38,18 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
+    Random random=Random();
+    int index=random.nextInt(8);
+    List<String> quotes=[
+      "It's only after we've lost everything that we're free to do anything.",
+      "The things we own end up owning us.",
+      "I let go. Lost in oblivion. Dark and silent and complete. I found freedom. Losing all hope was freedom.",
+      "May I never be complete. May I never be content. May I never be perfect.",
+      "Advertising has us chasing cars and clothes, working jobs we hate so we can buy things we don't need.",
+      "When you look at the dark side, careful you must be. For the dark side looks back.",
+      "If no mistake you have made, losing you are. A different game you should play.",
+      "The Universe is under no obligation to make sense to you.",
+    ];
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
@@ -48,7 +62,7 @@ class _LoadingPageState extends State<LoadingPage> {
                 Image.asset("assets/logo.png"),
                 SizedBox(height: 20,),
                 Text(
-                  "The Universe is under no obligation to make sense to you.",
+                  quotes[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 22,
