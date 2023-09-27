@@ -19,4 +19,20 @@ class ConversationsModel{
       print("Error in conversations.dart : error code: "+response.statusCode.toString());
     }
   }
+  static late final fullMessage;
+  static Future<void> getFullMessage(int id) async{
+    final response=await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/conversations/$id?access_token=${LoginModel.token}"));
+    if(response.statusCode==200){
+      try{
+        fullMessage=jsonDecode(response.body);
+      }
+      catch(e){
+        print(e.toString());
+      }
+    }else{
+      print("Error in conversations.dart : error code: "+response.statusCode.toString());
+    }
+
+
+  }
 }

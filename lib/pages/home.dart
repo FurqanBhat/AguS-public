@@ -84,12 +84,6 @@ class _HomeState extends State<Home> {
                       Navigator.of(context).pushNamed(RouteManager.conversations);
                     },
                     ),
-                    DrawerTile(title: "Final Exams", icon: Icon(Icons.schedule),
-                    onTap: (){
-                      scaffoldKey.currentState?.closeEndDrawer();
-                      Navigator.of(context).pushNamed(RouteManager.finalExams);
-                    },
-                    ),
                   ],
                 ),
               )

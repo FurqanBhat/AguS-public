@@ -1,12 +1,11 @@
 import 'dart:convert';
-
+import 'package:agus/main.dart';
 import 'package:agus/model/conversations_model.dart';
 import 'package:agus/model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 class Conversations extends StatefulWidget {
   const Conversations({super.key});
-
   @override
   State<Conversations> createState() => _ConversationsState();
 }
@@ -31,27 +30,41 @@ class _ConversationsState extends State<Conversations>{
               subtitle: Text(ConversationsModel.conversations[index]["last_message"]),
               subtitleTextStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
               trailing: IconButton(
-                onPressed: (){
+                onPressed: () async{
+                  await ConversationsModel.getFullMessage(ConversationsModel.conversations[index]["id"]);
                   showDialog(
                       context: context,
                       builder: (context){
                         return Center(
                           child: Container(
                             padding: EdgeInsets.all(30),
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.blueGrey[900]
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: ListView.builder(
+                              itemCount: ConversationsModel.fullMessage['message_count'],
+                              itemBuilder: (context, index){
+                                return Container(
+                                  padding: EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueGrey[900],
+                                    borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Text("Message ${ConversationsModel.fullMessage['message_count']-index}", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                      SizedBox(height: 10,),
+                                      Text(ConversationsModel.fullMessage["messages"][index]["body"],
+                                        style: TextStyle(
+                                            fontSize: 16
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                );
+                              },
+
                             ),
-                            child: Text("Last Message: " + ConversationsModel.conversations[index]["last_authored_message"],
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white
                             ),
-                            ),
-                          ),
-                        );
+                          );
                       },
                   );
                 },

@@ -5,7 +5,6 @@ import 'package:agus/widgets/conversations.dart';
 import 'package:agus/widgets/courses_info.dart';
 import 'package:agus/widgets/discussions.dart';
 import 'package:agus/widgets/files_page.dart';
-import 'package:agus/widgets/final_exam.dart';
 import 'package:agus/widgets/pdf_viewer.dart';
 import 'package:agus/widgets/results.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,6 @@ class RouteManager{
   static const String filesPage="/coursesInfo/filesPage";
   static const String pdfViewer="/coursesInfo/filesPage/pdfViewer";
   static const String conversations="/drawer/conversations";
-  static const String finalExams="/drawer/finalExams";
   static const String assignments="/coursesInfo/assignments";
   static const String results="/coursesInfo/results";
   static const String discussions="/coursesInfo/discussions";
@@ -51,8 +49,6 @@ class RouteManager{
         return MaterialPageRoute(builder: (context)=>PdfViewer());
       case conversations:
         return MaterialPageRoute(builder: (context)=>Conversations());
-      case finalExams:
-        return MaterialPageRoute(builder: (context)=>FinalExam());
       default:
         throw FormatException();
 

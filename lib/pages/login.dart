@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
               ): Container(),
               Column(
               children: [
-                SizedBox(height: 80,),
+                SizedBox(height: 70,),
                 CircleAvatar(
                   backgroundImage: AssetImage("assets/loginIcon.png"),
                   radius: 80,
@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                 Text(
                   "Canvas Login",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.white70,
                     fontSize: 40,
                     fontWeight: FontWeight.w900,
                   ),
@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                      backgroundColor: Colors.white,
+                      backgroundColor: Colors.grey[300],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
 
@@ -120,17 +120,16 @@ class _LoginState extends State<Login> {
 
                     ),
                   ),
-                  SizedBox(height: 70,),
+                  SizedBox(height: 60,),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      surfaceTintColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     ),
                     onPressed: (){
-                      print("help");
                       Navigator.of(context).pushNamed(RouteManager.help);
                     },
                     child: Text(
-                      "Help",
+                      "  Help  ",
                       style: TextStyle(
                         fontSize: 20,
                       ),
