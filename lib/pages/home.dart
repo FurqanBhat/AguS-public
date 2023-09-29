@@ -1,4 +1,5 @@
 import 'package:agus/main.dart';
+import 'package:agus/model/login_model.dart';
 import 'package:agus/widgets/courses_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -43,13 +44,13 @@ class _HomeState extends State<Home> {
           bottom: TabBar(
             tabs: [
               Tab(
+                text: 'Courses',
+              ),
+              Tab(
                 text: 'Latest Announcements',
               ),
               Tab(
                 text: 'Upcoming Assignments',
-              ),
-              Tab(
-                text: 'Courses',
               ),
 
             ],
@@ -84,6 +85,14 @@ class _HomeState extends State<Home> {
                       Navigator.of(context).pushNamed(RouteManager.conversations);
                     },
                     ),
+                    DrawerTile(title: "LogOut", icon:Icon(Icons.logout),
+                      onTap: (){
+                        scaffoldKey.currentState?.closeEndDrawer();
+                        LoginModel.logOut();
+                        Navigator.of(context).pushNamed(RouteManager.login);
+                      },
+                    ),
+
                   ],
                 ),
               )
@@ -92,9 +101,9 @@ class _HomeState extends State<Home> {
         ),
         body: TabBarView(
           children: [
+            CoursesWidget(),
             LatestAnnouncements(),
             LatestAssignments(),
-            CoursesWidget(),
           ],
         ),
       ),

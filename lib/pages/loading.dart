@@ -34,8 +34,6 @@ class _LoadingPageState extends State<LoadingPage> {
     await LoginModel.loginstart();
     await CoursesModel.fetchCourses();
     await ConversationsModel.getConversations();
-    await LatestAnnouncementsModel.fetchLatestAnnouncements();
-    await LatestAssignmentsModel.fetchLatestAssignments();
     context.read<LoadingModel>().doneLoading=true;
   }
 

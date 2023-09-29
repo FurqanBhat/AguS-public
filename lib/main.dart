@@ -1,4 +1,6 @@
 import 'package:agus/model/courses_model.dart';
+import 'package:agus/model/latest_announcements_model.dart';
+import 'package:agus/model/latest_assignments_model.dart';
 import 'package:agus/model/loading_model.dart';
 import 'package:agus/model/login_model.dart';
 import 'package:agus/pages/home.dart';
@@ -23,6 +25,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => LoadingModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context)=>LatestAnnouncementsModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context)=> LatestAssignmentsModel(),
+        )
       ],
       builder: (context, widget) {
         return context.watch<LoadingModel>().doneLoading ?  MaterialApp(

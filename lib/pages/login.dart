@@ -87,27 +87,27 @@ class _LoginState extends State<Login> {
                         LoginModel.setLoginSuccessful();
                         await LoginModel.loginstart();
                         await ConversationsModel.getConversations();
-                        await LatestAnnouncementsModel.fetchLatestAnnouncements();
-                        await LatestAssignmentsModel.fetchLatestAssignments();
+                        // await LatestAnnouncementsModel();
+                        // await LatestAssignmentsModel();
+                        setState(() {
+                          progressBar=false;
+                        });
                         Navigator.of(context).pushReplacementNamed(RouteManager.home);
                       }else{
+                        setState(() {
+                          progressBar=false;
+                        });
                         showBottomSheet(
                             context: context,
                             builder: (context)=>Text("Wrong token"),
                         );
                       }
-                      setState(() {
-                        progressBar=false;
-                      });
-
-
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                       backgroundColor: Colors.grey[300],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
-
                       )
                     ),
                     child: Text(

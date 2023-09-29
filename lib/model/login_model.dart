@@ -38,5 +38,10 @@ class LoginModel{
     _loginSuccessful=true;
     _saveDataInPref();
   }
+  static void logOut(){
+    _token="";
+    _loginSuccessful=false;
+    _saveDataInPref();
+  }
 
 }

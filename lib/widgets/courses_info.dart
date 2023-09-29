@@ -64,7 +64,7 @@ class _CoursesInfoState extends State<CoursesInfo> {
             ),
               ListTile(
                 leading: Icon(Icons.assignment, color: Colors.blueGrey[400],),
-                title: Text("All Assignments"),
+                title: Text("Assignments"),
                 onTap: () async{
                   setState(() {
                     progressBar=true;
@@ -75,7 +75,6 @@ class _CoursesInfoState extends State<CoursesInfo> {
                   });
                   Navigator.of(context).pushNamed(RouteManager.assignments);
                 },
-
               ),
               ListTile(
                 leading: Icon(Icons.grade, color: Colors.blueGrey[400],),
