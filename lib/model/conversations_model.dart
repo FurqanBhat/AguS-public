@@ -7,7 +7,7 @@ import 'login_model.dart';
 class ConversationsModel{
   static List<dynamic> conversations=[];
   static Future<void> getConversations() async{
-    final response=await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/conversations?access_token=${LoginModel.token}"));
+    final response=await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/conversations?per_page=50&access_token=${LoginModel.token}"));
     if(response.statusCode==200){
       try{
         conversations=jsonDecode(response.body);
@@ -21,7 +21,7 @@ class ConversationsModel{
   }
   static late final fullMessage;
   static Future<void> getFullMessage(int id) async{
-    final response=await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/conversations/$id?access_token=${LoginModel.token}"));
+    final response=await get(Uri.parse("https://canvas.agu.edu.tr/api/v1/conversations/$id?per_page=50&access_token=${LoginModel.token}"));
     if(response.statusCode==200){
       try{
         fullMessage=jsonDecode(response.body);

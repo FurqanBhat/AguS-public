@@ -35,15 +35,9 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.all(8.0),
           child: Stack(
             children:[
-              progressBar ? Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.white,
-                  color: Colors.red,
-                ),
-              ): Container(),
               Column(
               children: [
-                SizedBox(height: 70,),
+                SizedBox(height: 80,),
                 CircleAvatar(
                   backgroundImage: AssetImage("assets/loginIcon.png"),
                   radius: 80,
@@ -58,7 +52,7 @@ class _LoginState extends State<Login> {
                   ),
 
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 40,),
                   TextField(
                     controller: loginController,
                     decoration: InputDecoration(
@@ -73,7 +67,7 @@ class _LoginState extends State<Login> {
                     ),
 
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 50,),
 
                   ElevatedButton(
                     onPressed: () async{
@@ -120,7 +114,7 @@ class _LoginState extends State<Login> {
 
                     ),
                   ),
-                  SizedBox(height: 60,),
+                  SizedBox(height: 80,),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
@@ -137,6 +131,20 @@ class _LoginState extends State<Login> {
                   )
                 ],
               ),
+              progressBar ? Center(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration:
+                  BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                    color: Colors.red,
+                  ),
+                ),
+              ): Container(),
         ]
           ),
           ),

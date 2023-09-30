@@ -29,8 +29,8 @@ class _HomeState extends State<Home> {
             child: Image.asset('assets/logo.png'),
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.all(12),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              backgroundColor: secondaryColor,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+              backgroundColor: Colors.blueGrey[900],
             ),
           ),
           actions: [
@@ -39,18 +39,19 @@ class _HomeState extends State<Home> {
               onPressed: (){
                 scaffoldKey.currentState?.openEndDrawer();
               },
-            )
+            ),
+
           ],
           bottom: TabBar(
             tabs: [
               Tab(
-                text: 'Courses',
+                child: Text('Active \nCourses', textAlign: TextAlign.center,),
               ),
               Tab(
-                text: 'Latest Announcements',
+                child: Text('Latest \nAnnouces.', textAlign: TextAlign.center,),
               ),
               Tab(
-                text: 'Upcoming Assignments',
+                child: Text('Upcoming \nAssignments', textAlign: TextAlign.center,),
               ),
 
             ],
@@ -59,11 +60,11 @@ class _HomeState extends State<Home> {
           ),
           titleTextStyle: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 25,
+            fontSize: 30,
             color: Colors.grey,
           ),
           foregroundColor: Colors.grey,
-          title: Text("AguS"),
+          title: Text("Agu-S"),
         ),
         endDrawer: Drawer(
           backgroundColor: secondaryColor,
@@ -84,6 +85,12 @@ class _HomeState extends State<Home> {
                       scaffoldKey.currentState?.closeEndDrawer();
                       Navigator.of(context).pushNamed(RouteManager.conversations);
                     },
+                    ),
+                    DrawerTile(title: "Calendar Events", icon:Icon(Icons.calendar_month),
+                      onTap: (){
+                        scaffoldKey.currentState?.closeEndDrawer();
+                        Navigator.of(context).pushNamed(RouteManager.calendar);
+                      },
                     ),
                     DrawerTile(title: "LogOut", icon:Icon(Icons.logout),
                       onTap: (){
