@@ -7,14 +7,42 @@ class LatestAnnouncements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: context.watch<LatestAnnouncementsModel>().finished ? ListView.builder(
-        itemCount: context.watch<LatestAnnouncementsModel>().latestAnnouncements.length,
-        itemBuilder: (context, index){
-          return ListTile(
+        child: Consumer<LatestAnnouncementsModel>(
+          builder: (context, latestAnnouncementsModel, child) {
+            return latestAnnouncementsModel.finished ?
+            latestAnnouncementsModel.latestAnnouncements.isEmpty ?
+            Container(
+              child: Text("No new announcements.", textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),), padding: EdgeInsets.all(20),
+            ) : ListView.builder(
+              itemCount: latestAnnouncementsModel.latestAnnouncements.length,
+              itemBuilder: (context, index){
+                return ListTile(
+                  title: Text("full"),
 
-          );
-        },
-      ) : Center(child: CircularProgressIndicator(),),
-    ) ;
+                );
+              },
+            ) : Center(child: CircularProgressIndicator(),
+            ) ;
+
+
+          },
+
+        )
+    );
   }
 }
+
+
+    //     context.watch<LatestAnnouncementsModel>().finished ? ListView.builder(
+    //     itemCount: context.watch<LatestAnnouncementsModel>().latestAnnouncements.length,
+    //     itemBuilder: (context, index){
+    //       return context.watch<LatestAnnouncementsModel>().latestAnnouncements.isEmpty ? Text("No new announcements")
+    //           :  ListTile(
+    //
+    //       );
+    //     },
+    //   ) : Center(child: CircularProgressIndicator(),),
+    // ) ;
+  // }
+// }

@@ -15,7 +15,7 @@ class LatestAssignmentsModel extends ChangeNotifier{
   Future<void> fetchLatestAssignments() async{
     print("in latest assingments model");
     for(final course in CoursesModel.courses){
-      final response=await get(Uri.parse('https://canvas.agu.edu.tr/api/v1/courses/${course['id']}/assignments?per_page=50&access_token=${LoginModel.token}'));
+      final response=await get(Uri.parse('https://canvas.agu.edu.tr/api/v1/courses/${course['id']}/assignments?per_page=50&bucket=upcoming&access_token=${LoginModel.token}'));
       if(response.statusCode==200){
         try {
           List<dynamic> list=jsonDecode(response.body);
